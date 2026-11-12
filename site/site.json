@@ -1,0 +1,11 @@
+{
+  "project": "EgoLens",
+  "domain": "egolens.top",
+  "paper_url": null,
+  "code_url": "https://github.com/heiheiheiha00/egolens",
+  "demos": [
+    {"id":"tool","title":"跟随视角，追踪一个工具","video":"/assets/demos/tool.mp4","poster":"/assets/demos/tool.jpg","source":"EgoLife DAY4_A1_JAKE_12253000","excerpt":"0–12s","kind":"预录追踪模块片段"},
+    {"id":"bowl","title":"餐具移动中的局部轨迹","video":"/assets/demos/bowl.mp4","poster":"/assets/demos/bowl.jpg","source":"EgoLife DAY2_A1_JAKE_17163000","excerpt":"2–12s","kind":"预录追踪模块片段"},
+    {"id":"bottles","title":"让相似目标拥有独立编号","video":"/assets/demos/bottles.mp4","poster":"/assets/demos/bottles.jpg","source":"EgoLife DAY3_A1_JAKE_12000000","excerpt":"0–13s","kind":"预录追踪模块片段"}
+  ]
+}

@@ -1,0 +1,6 @@
+# Python 3.12; choose torch/torchvision wheels for your CUDA/GPU first.
+transformers==4.54.0
+accelerate>=1,<2
+decord==0.6.0
+numpy==1.26.4
+Pillow>=10,<13

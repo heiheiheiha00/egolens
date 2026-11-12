@@ -1,0 +1,7 @@
+# Public project page only. No proxy to the laboratory or model services.
+# Replace this path with the directory containing the public site files.
+egolens.top {
+    root * /path/to/egolens/site
+    encode zstd gzip
+    file_server
+}
