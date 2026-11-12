@@ -1,48 +1,25 @@
-# 公开项目页与私有工作台
+# 项目页部署
 
-两者分别部署：
+项目主页：[egolens.top](https://egolens.top/)。
 
-- **公开网站**：只托管`site/`静态文件，包含项目说明、Paper入口、代码链接和预录视频；没有真实演示入口，不请求模型API，不包含实验室服务器地址。
-- **私有工作台**：实验室服务器本机监听`127.0.0.1`，通过SSH本地转发使用，按需启动模型；不接到网站域名，不配置公网反向代理。
+`site/`包含项目介绍、代码链接和预录演示，可部署到静态托管服务。
 
 ## 公开静态站点
 
-将`site/`目录部署到GitHub Pages等静态托管即可，完全不需要暴露实验室服务器。Paper链接在`site/site.json`设置；目前为空，页面明确提示筹备中。`site/assets/demos/`为已标明来源的预录模块片段。
+将`site/`目录部署到GitHub Pages等静态托管服务。`site/assets/demos/`保存演示媒体。
 
-GitHub Pages使用`gh-pages`分支的根目录托管静态文件。提交并推送main后，运行`node tools/publish-pages.mjs`，仅发布当前提交的`site/`文件树；不会复制实验室数据、`.env`或工作台API。`tools/preview.mjs`或`egolens site`用于本机预览，不启动模型。
-
-域名`egolens.top`已配置为项目的自定义域名。阿里云DNS中根域名`@`使用GitHub Pages官方四条A记录：185.199.108.153、185.199.109.153、185.199.110.153、185.199.111.153；`www`使用CNAME `heiheiheiha00.github.io`。保留其他用途的解析记录，避免与网站记录冲突。公网解析目标是GitHub Pages，不是本机或实验室的`10.x`地址。
-
-域名实名认证不等于静态网站已部署；部署完成、DNS传播和证书签发分别检查。HTTPS需要GitHub完成自定义域名证书后开启Enforce HTTPS。参考[GitHub官方域名说明](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)。
-
-如以后使用独立公共Web主机，`deploy/Caddyfile.example`也只提供静态目录，不代理私有服务。
-
-## 实验室按需启动
-
-先在服务器配置模型、GPU、环境和私有数据，然后：
+本仓库使用`gh-pages`分支的根目录托管静态文件。提交并推送`main`后，运行：
 
 ```bash
-egolens start
-egolens status
-
-# 演示结束关闭Web与模型，释放GPU。
-egolens stop
+node tools/publish-pages.mjs
 ```
 
-控制器默认启动Tracker、Visual、Web。模型加载期间status显示offline，日志在用户配置的`state_dir/logs/`。只启动API时可用`egolens start --services web`，不会加载GPU模型。
+发布脚本将当前提交的`site/`文件树同步到`gh-pages`。
 
-## SSH本地访问
+## 域名
 
-在自己的电脑运行以下命令，将占位值替换为自己已经有权限使用的SSH主机：
+项目使用`egolens.top`作为自定义域名。域名配置保存在`site/CNAME`，站点使用HTTPS访问。
 
-```bash
-ssh -N -L 127.0.0.1:18780:127.0.0.1:18780 YOUR_SSH_HOST
-```
+## 其他托管方式
 
-然后访问`http://127.0.0.1:18780/demo/`。工作台服务仅允许loopback绑定；默认Web18780、Visual18765、Tracker18779，可在配置中修改本机端口。**不要为这些服务配置公网入站或在公开网站添加API代理。**
-
-可在私有`.env`设置`DEMO_ACCESS_TOKEN`作为额外的工作台密码；浏览器用户名填`egolens`，密码填自定义值。Key、密码和私有数据不提交到GitHub。
-
-## 状态与缓存
-
-服务关闭后，私有工作台不可访问；公开静态项目页和预录视频不受影响。解码帧缓存受1GB/1小时策略约束；旧终态任务超过200条后清理24小时前记录；日志超过5MB在启动时轮转。会话、目标版本和用户视频不会自动当作临时文件删除。
+使用独立Web主机时，可参考`deploy/Caddyfile.example`配置静态目录。运行环境和数据格式分别见[环境说明](ENVIRONMENTS.md)与[数据说明](DATA.md)。
