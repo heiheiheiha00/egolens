@@ -184,6 +184,43 @@
           ]
         }
       ]
+    },
+    {
+      "id": "tracking",
+      "label": "目标追踪",
+      "title": "视角在变，跟随选中的工具。",
+      "intro": "查看 SAM2 的预录区域传播结果。点击轨迹回放，观察工具随第一人称视角变化的分割叠加。",
+      "clips": {
+        "tool": {
+          "video": "./assets/demos/tool.mp4",
+          "poster": "./assets/demos/tool.jpg",
+          "source": "DAY4_A1_JAKE_12253000.mp4",
+          "start": 0,
+          "end": 12,
+          "audio": false
+        }
+      },
+      "turns": [
+        {
+          "stage": "预录追踪模块",
+          "record_label": "预录模块结果",
+          "question_label": "操作说明",
+          "question": "围绕选中的工具，查看后续帧中的区域与轨迹。",
+          "answer_label": "追踪演示说明",
+          "answer": "SAM2 从交互选定的目标出发传播分割区域。视频中的彩色叠加展示工具在视角变化中的跟随结果，可配合画面逐帧回看。",
+          "note": "本项展示实际预录追踪结果；操作说明不作为模型问答记录。",
+          "clip": "tool",
+          "evidence": [
+            {
+              "id": "轨迹",
+              "label": "回放工具追踪片段",
+              "time_label": "原片段 0–12s · SAM2 区域叠加 · 静音",
+              "start": 0,
+              "end": 12
+            }
+          ]
+        }
+      ]
     }
   ]
 }
