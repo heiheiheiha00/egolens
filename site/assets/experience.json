@@ -1,0 +1,189 @@
+{
+  "mode": "recorded-historical-exhibit",
+  "cases": [
+    {
+      "id": "memory",
+      "label": "多轮对话",
+      "title": "换了话题，也能回到第一轮。",
+      "intro": "床品 → 手机 → 回到床品。沿着三轮真实对话，查看问题如何找回之前的指代。",
+      "clips": {
+        "bed": {
+          "video": "./assets/demos/memory-bed.mp4",
+          "poster": "./assets/demos/memory-bed.jpg",
+          "source": "DAY5_A1_JAKE_11003100.mp4",
+          "start": 10,
+          "end": 20,
+          "audio": false
+        },
+        "phone": {
+          "video": "./assets/demos/memory-phone.mp4",
+          "poster": "./assets/demos/memory-phone.jpg",
+          "source": "DAY6_A1_JAKE_09493300.mp4",
+          "start": 0,
+          "end": 12,
+          "audio": false
+        }
+      },
+      "turns": [
+        {
+          "stage": "第 1 轮 · 确认床品",
+          "question_label": "用户问题",
+          "question": "DAY5床上床品是什么颜色？",
+          "answer": "根据当前直接观察，DAY5 该片段中床上的床品呈白色（E2）。",
+          "clip": "bed",
+          "note": "",
+          "evidence": [
+            {
+              "id": "E2",
+              "label": "回看床品片段",
+              "time_label": "原始证据窗 10–20s",
+              "start": 10,
+              "end": 20
+            }
+          ]
+        },
+        {
+          "stage": "第 2 轮 · 切换话题",
+          "question_label": "用户问题",
+          "question": "换到DAY6，坐着的人拿着什么？",
+          "answer": "DAY6 该片段中，坐着的人手里拿着一部智能手机（E1）。",
+          "clip": "phone",
+          "note": "",
+          "evidence": [
+            {
+              "id": "E1",
+              "label": "回看手机片段",
+              "time_label": "原始证据窗 0–26.96s · 网页节选0–12s",
+              "start": 0,
+              "end": 26.96
+            }
+          ]
+        },
+        {
+          "stage": "第 3 轮 · 返回第一轮",
+          "question_label": "用户问题",
+          "question": "回到第一轮床品，它是什么颜色？",
+          "answer": "根据当前直接观察，DAY5 该片段中床上的床品呈白色（E2）。",
+          "clip": "bed",
+          "note": "这一轮实际回到了第一轮的床品话题。",
+          "evidence": [
+            {
+              "id": "E2",
+              "label": "回看床品片段",
+              "time_label": "原始证据窗 10–20s",
+              "start": 10,
+              "end": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recall",
+      "label": "证据召回",
+      "title": "先不确定，再回到关键的8秒。",
+      "intro": "同一个问题的实际反馈过程：首轮没有确定答案，随后定向补看接触前的画面。",
+      "clips": {
+        "screen": {
+          "video": "./assets/demos/recall-screen.mp4",
+          "poster": "./assets/demos/recall-screen.jpg",
+          "source": "DAY2_A1_JAKE_17383000.mp4",
+          "start": 0,
+          "end": 8,
+          "audio": false
+        }
+      },
+      "turns": [
+        {
+          "stage": "第 1 步 · 首次观察",
+          "question_label": "用户问题",
+          "question": "DAY2 17:38手接触笔记本电脑之前，屏幕已经亮着显示画面了吗？",
+          "answer": "无法确定。当前唯一直接观察 E1 对该时段的记录为“Unknown”，没有提供手接触笔记本电脑之前屏幕是否已亮起并显示画面的可见信息。",
+          "clip": "screen",
+          "note": "首轮记录使用0–29.96秒窗口，视觉观察没有确定答案。",
+          "evidence": [
+            {
+              "id": "E1",
+              "label": "首轮来源的前8秒节选",
+              "time_label": "原始证据窗0–29.96s · 网页节选0–8s",
+              "start": 0,
+              "end": 8
+            }
+          ]
+        },
+        {
+          "stage": "第 2 步 · 定向补看",
+          "question_label": "系统补看请求（同一个用户问题）",
+          "question": "在手接触笔记本电脑键盘之前，笔记本电脑屏幕是否亮着并显示可见内容？",
+          "answer": "是的，在DAY2 17:38手接触笔记本电脑键盘之前，屏幕已经亮着并显示可见内容（E2）。",
+          "answer_label": "补看后的最终回答",
+          "clip": "screen",
+          "note": "真实反馈请求把核对窗口缩小到接触前的0–8秒，并增加证据E2。",
+          "evidence": [
+            {
+              "id": "E2",
+              "label": "回看接触前的亮屏画面",
+              "time_label": "原始证据窗0–8s",
+              "start": 0,
+              "end": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "speech",
+      "label": "语音回放",
+      "title": "从一句回答，回到说过的那句话。",
+      "intro": "连续追问谈话内容与来源，点击证据定位到原始语音；展示文字为真实回答摘录。",
+      "clips": {
+        "talk": {
+          "video": "./assets/demos/speech-replay.mp4",
+          "poster": "./assets/demos/speech-replay.jpg",
+          "source": "DAY4_A1_JAKE_CONTINUOUS_12150000.mp4",
+          "start": 649.834,
+          "end": 659.31,
+          "audio": true
+        }
+      },
+      "turns": [
+        {
+          "stage": "第 1 轮 · 询问谈话",
+          "question_label": "用户追问",
+          "question": "这段谈话说电脑装回去了吗？",
+          "answer": "并没有说电脑被装回原位。",
+          "answer_label": "历史回答摘录",
+          "clip": "talk",
+          "note": "回答依据谈话内容；下一轮继续询问来源。",
+          "evidence": [
+            {
+              "id": "E1",
+              "label": "“然后拆了没装回去”",
+              "time_label": "原录像 651.754–653.234s · 含原声",
+              "start": 651.754,
+              "end": 653.234
+            }
+          ]
+        },
+        {
+          "stage": "第 2 轮 · 请求来源",
+          "question_label": "用户追问",
+          "question": "请给出相关谈话的视频证据。",
+          "answer": "因此这段谈话明确说的是拆开后没有装回去，最后成了散装台式机状态，而不是装回原位。",
+          "answer_label": "历史回答摘录",
+          "clip": "talk",
+          "note": "点击下面的语音证据，直接听到对应的那一句。",
+          "evidence": [
+            {
+              "id": "E1",
+              "label": "“然后拆了没装回去”",
+              "time_label": "原录像 651.754–653.234s · 含原声",
+              "start": 651.754,
+              "end": 653.234
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -18,8 +18,12 @@ The official dataset card declares `license: mit`: <https://huggingface.co/datas
 | `site/assets/demos/tool.mp4` | `DAY4_A1_JAKE_12253000.mp4` | 0–12s | Tracking overlay, silent web transcode |
 | `site/assets/demos/bowl.mp4` | `DAY2_A1_JAKE_17163000.mp4` | 2–12s | Tracking overlay, silent web transcode |
 | `site/assets/demos/bottles.mp4` | `DAY3_A1_JAKE_12000000.mp4` | 0–13s | Two-target overlay, silent web transcode |
+| `site/assets/demos/memory-bed.mp4` | `DAY5_A1_JAKE_11003100.mp4` | 10–20s | Silent source excerpt for a recorded dialogue |
+| `site/assets/demos/memory-phone.mp4` | `DAY6_A1_JAKE_09493300.mp4` | 0–12s | Silent source excerpt for a recorded dialogue |
+| `site/assets/demos/recall-screen.mp4` | `DAY2_A1_JAKE_17383000.mp4` | 0–8s | Silent excerpt of the actual feedback window |
+| `site/assets/demos/speech-replay.mp4` | `DAY4_A1_JAKE_CONTINUOUS_12150000.mp4` | 649.834–659.310s | Source speech excerpt with AAC audio |
 
-The matching JPGs are frames from these derived clips. They are recorded development-module examples, not live inference, not footage captured by EgoLens, and not complete end-to-end QA demonstrations. Short excerpts do not establish full-sequence tracking accuracy or physical identity across days. Dataset research should cite the EgoLife paper using its [official citation](https://github.com/EvolvingLMMs-Lab/EgoLife#-citation).
+The matching JPGs are frames from these derived clips. The first three clips are recorded tracking-module outputs. The four additional excerpts accompany curated actual historical dialogue/feedback records in `site/assets/experience.json`; answer excerpts are explicitly labelled. Clicking a historical step does not run a model. None of this footage was captured by EgoLens. Short excerpts do not establish full-sequence tracking accuracy or physical identity across days. Dataset research should cite the EgoLife paper using its [official citation](https://github.com/EvolvingLMMs-Lab/EgoLife#-citation).
 
 ## Separately installed components
 

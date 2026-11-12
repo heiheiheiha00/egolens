@@ -9,9 +9,11 @@
 
 将`site/`目录部署到GitHub Pages等静态托管即可，完全不需要暴露实验室服务器。Paper链接在`site/site.json`设置；目前为空，页面明确提示筹备中。`site/assets/demos/`为已标明来源的预录模块片段。
 
-GitHub Pages可从单独的发布分支托管静态文件；不要把实验室根目录、数据、`.env`或工作台API一并部署。`tools/preview.mjs`或`egolens site`用于本机预览，不启动模型。
+GitHub Pages使用`gh-pages`分支的根目录托管静态文件。提交并推送main后，运行`node tools/publish-pages.mjs`，仅发布当前提交的`site/`文件树；不会复制实验室数据、`.env`或工作台API。`tools/preview.mjs`或`egolens site`用于本机预览，不启动模型。
 
-域名`egolens.top`实名与托管服务配置完成后，再按托管平台给出的记录解析域名、验证所有权并开启HTTPS。公网解析目标是静态托管平台，不是本机或实验室的`10.x`地址。当前源码不表示DNS或HTTPS已经完成。
+域名`egolens.top`已配置为项目的自定义域名。阿里云DNS中根域名`@`使用GitHub Pages官方四条A记录：185.199.108.153、185.199.109.153、185.199.110.153、185.199.111.153；`www`使用CNAME `heiheiheiha00.github.io`。保留其他用途的解析记录，避免与网站记录冲突。公网解析目标是GitHub Pages，不是本机或实验室的`10.x`地址。
+
+域名实名认证不等于静态网站已部署；部署完成、DNS传播和证书签发分别检查。HTTPS需要GitHub完成自定义域名证书后开启Enforce HTTPS。参考[GitHub官方域名说明](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)。
 
 如以后使用独立公共Web主机，`deploy/Caddyfile.example`也只提供静态目录，不代理私有服务。
 
