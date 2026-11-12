@@ -17,6 +17,7 @@ function renderStep(){
   document.querySelector('#caseStage').textContent=t.stage;document.querySelector('#caseQuestion').textContent=t.question;document.querySelector('#caseAnswer').textContent=t.answer;
   document.querySelector('#caseQuestionLabel').textContent=t.question_label||'用户问题';
   document.querySelector('#answerLabel').textContent=t.answer_label||'历史回答';
+  document.querySelector('.case-stage>span:last-child').textContent=t.record_label||'真实历史记录';
   document.querySelector('#caseNote').textContent=t.note||'';
   document.querySelector('#caseSource').textContent=clip.source+' · 网页节选 '+clip.start.toFixed(2)+'–'+clip.end.toFixed(2)+'s';
   document.querySelector('#caseHistory').innerHTML=c.turns.slice(0,step).map((x,i)=>`<button data-past="${i}"><span>${i+1}</span>${escapeText(x.question)}</button>`).join('');
